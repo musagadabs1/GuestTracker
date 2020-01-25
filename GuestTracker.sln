@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F9FDD9EF-6700-4EE4-BB7F-6AD6D305A91E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "clients", "clients", "{0683FE45-CFC3-4224-928D-89B690939305}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{F81CEAEE-65C7-4F5F-9415-81A09A48BC9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utilities", "utilities", "{FF65326D-1747-469A-B4E6-E717C30A5A02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2CC0DB7A-A4A5-4CBA-9299-18A0D2B00FC4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuestTracker.Web", "src\clients\GuestTracker.Web\GuestTracker.Web.csproj", "{3E2266F2-E83E-47A1-81BE-A044E924D891}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuestTracker.DAL", "src\services\DAL\GuestTracker.DAL\GuestTracker.DAL.csproj", "{8B5CF2DB-0858-4534-A935-97B38B802643}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E2266F2-E83E-47A1-81BE-A044E924D891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E2266F2-E83E-47A1-81BE-A044E924D891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E2266F2-E83E-47A1-81BE-A044E924D891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E2266F2-E83E-47A1-81BE-A044E924D891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B5CF2DB-0858-4534-A935-97B38B802643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B5CF2DB-0858-4534-A935-97B38B802643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B5CF2DB-0858-4534-A935-97B38B802643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B5CF2DB-0858-4534-A935-97B38B802643}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0683FE45-CFC3-4224-928D-89B690939305} = {F9FDD9EF-6700-4EE4-BB7F-6AD6D305A91E}
+		{F81CEAEE-65C7-4F5F-9415-81A09A48BC9A} = {F9FDD9EF-6700-4EE4-BB7F-6AD6D305A91E}
+		{FF65326D-1747-469A-B4E6-E717C30A5A02} = {F9FDD9EF-6700-4EE4-BB7F-6AD6D305A91E}
+		{2CC0DB7A-A4A5-4CBA-9299-18A0D2B00FC4} = {F9FDD9EF-6700-4EE4-BB7F-6AD6D305A91E}
+		{3E2266F2-E83E-47A1-81BE-A044E924D891} = {0683FE45-CFC3-4224-928D-89B690939305}
+		{8B5CF2DB-0858-4534-A935-97B38B802643} = {F81CEAEE-65C7-4F5F-9415-81A09A48BC9A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98D05D52-FEFF-42AB-9530-FE36CFC57450}
+	EndGlobalSection
+EndGlobal

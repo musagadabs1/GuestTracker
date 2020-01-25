@@ -1,0 +1,82 @@
+﻿@model GuestTracker.Web.Models.GuestVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Add New Guest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GuestName" class="control-label"></label>
+                <input asp-for="GuestName" class="form-control" />
+                <span asp-validation-for="GuestName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArrivalDate" class="control-label"></label>
+                <input asp-for="ArrivalDate" class="form-control" type="date" />
+                <span asp-validation-for="ArrivalDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArrivalTime" class="control-label"></label>
+                <input asp-for="ArrivalTime" class="form-control" type="time" />
+                <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuestAddress" class="control-label"></label>
+                <input asp-for="GuestAddress" class="form-control" />
+                <span asp-validation-for="GuestAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurposeOfVisit" class="control-label"></label>
+                <input asp-for="PurposeOfVisit" class="form-control" />
+                <span asp-validation-for="PurposeOfVisit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WhomToSee" class="control-label"></label>
+                <input asp-for="WhomToSee" class="form-control" />
+                <span asp-validation-for="WhomToSee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartureTime" class="control-label"></label>
+                <input asp-for="DepartureTime" class="form-control" type="time" />
+                <span asp-validation-for="DepartureTime" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Signature" class="control-label"></label>
+                <input asp-for="Signature" class="form-control" />
+                <span asp-validation-for="Signature" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Sex" class="control-label"></label>
+                @*<input asp-for="Sex" class="form-control" />*@
+                @Html.DropDownListFor(x => Model.Sex, new SelectList(ViewBag.Sex, "Text", "Value"), htmlAttributes: new { @class = "form-control" })
+                <span asp-validation-for="Sex" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+
+}
