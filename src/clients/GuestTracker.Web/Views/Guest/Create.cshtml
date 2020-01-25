@@ -7,6 +7,10 @@
 <h1>Create</h1>
 
 <h4>Add New Guest</h4>
+@if (ViewBag.Error != null)
+{
+    <span style="color:red;">@ViewBag.Error.ToString()</span>
+}
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -53,10 +57,10 @@
                 <span asp-validation-for="DepartureTime" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="Signature" class="control-label"></label>
-                <input asp-for="Signature" class="form-control" />
-                <span asp-validation-for="Signature" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="Signature" class="control-label"></label>
+                    <input asp-for="Signature" class="form-control" />
+                    <span asp-validation-for="Signature" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <label asp-for="Sex" class="control-label"></label>
                 @*<input asp-for="Sex" class="form-control" />*@

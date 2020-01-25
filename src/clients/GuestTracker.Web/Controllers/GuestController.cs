@@ -53,6 +53,7 @@ namespace GuestTracker.Web.Controllers
             ViewBag.Sex = sexList;
             return View();
         }
+        
 
         // POST: Guest/Create
         [HttpPost]
@@ -61,13 +62,32 @@ namespace GuestTracker.Web.Controllers
         {
             try
             {
+
+                if (_unitOfWork.VisitDetail.IsVisitorIn(form.GuestName, DAL.Models.GuestVisitStatus.IN, DateTime.Today))
+                {
+                    ViewBag.Error = " Visitor is in already.";
+                    var sexList = new List<SelectListItem>();
+                    sexList.Add(new SelectListItem
+                    {
+                        Text = "Male",
+                        Value = "Male"
+                    });
+                    sexList.Add(new SelectListItem
+                    {
+                        Text = "Female",
+                        Value = "Female"
+                    });
+                    ViewBag.Sex = sexList;
+                    return View(form);
+                }
+
                 var signature = form.GuestName +  " signed";
                     //Instantiate Visit Detail
 
                     var visitDetail = new VisitDetail
                     {
                         Visit_Detail_Id = Guid.NewGuid(),
-                        NumberOfVisit = await GetNumberOfVisit(form.GuestName),
+                        //NumberOfVisit = await GetNumberOfVisit(form.GuestName),
                         PhoneNumber = form.PhoneNumber,
                         GuestName = form.GuestName,
                         VisitDate = DateTime.Today
@@ -106,20 +126,25 @@ namespace GuestTracker.Web.Controllers
             }
         }
 
-        private async Task<int> GetNumberOfVisit(string gustName)
+        //private async Task<int> GetNumberOfVisit(string gustName)
+        //{
+        //    var number=0;
+        //    var getGuest = await  _unitOfWork.Guest.GetGuests(gustName);
+        //    var records = getGuest.Count();
+        //    if (records <= 0)
+        //    {
+        //        number += 1;
+        //    }
+        //    else
+        //    {
+        //        number = records + 1;
+        //    }
+        //    return number;
+        //}
+        // GET: Guest/Edit/5
+        public ActionResult Error()
         {
-            var number=0;
-            var getGuest = await  _unitOfWork.Guest.GetGuests(gustName);
-            var records = getGuest.Count();
-            if (records <= 0)
-            {
-                number += 1;
-            }
-            else
-            {
-                number = records + 1;
-            }
-            return number;
+            return View();
         }
 
         // GET: Guest/Edit/5

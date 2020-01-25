@@ -30,11 +30,23 @@ namespace GuestTracker.DAL.Repositories
         {
             return await _dbContext.VisitDetails.Where(x => x.VisitDate == DateTime.Today && x.Status==GuestVisitStatus.IN).ToListAsync();
         }
+        public bool IsVisitorIn(string name, GuestVisitStatus status, DateTime visitDate)
+        {
+            var visitorIn = false;
+            var getVisitDetail = _dbContext.VisitDetails.Where(x => x.GuestName.Equals(name) && x.Status == status && x.VisitDate == visitDate);
 
+            if (getVisitDetail != null)
+            {
+                visitorIn = true;
+            }
+            return visitorIn;
+            //throw new NotImplementedException();
+        }
         public async Task<IEnumerable<VisitDetail>> GetVisitDetailsByVisitDateAsync()
         {
             return await _dbContext.VisitDetails.Where(x => x.VisitDate == DateTime.Today).ToListAsync();
         }
+
 
         public void UpdateVisitDetail(VisitDetail visitDetail)
         {

@@ -12,6 +12,8 @@ namespace GuestTracker.DAL.Interfaces
         Task<IEnumerable<VisitDetail>> GetVisitDetailsByVisitDateAsync();
         Task<IEnumerable<VisitDetail>> GetVisitDetailsByVisitDateAndStatusAsync();
         Task<VisitDetail> GetVisitDetailByGuestNameAsync(string name);
+        //Task<bool> IsVisitorIn(string name,GuestVisitStatus status,DateTime visitDate);
+        bool IsVisitorIn(string name, GuestVisitStatus status, DateTime visitDate);
         void UpdateVisitDetail(VisitDetail visitDetail);
 
         //Task<IList<VisitDetail>> GetAllVisitDetailAsync();
