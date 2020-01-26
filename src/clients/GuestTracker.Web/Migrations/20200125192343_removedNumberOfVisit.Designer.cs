@@ -4,14 +4,16 @@ using GuestTracker.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuestTracker.Web.Migrations
 {
     [DbContext(typeof(GuestDbContext))]
-    partial class GuestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200125192343_removedNumberOfVisit")]
+    partial class removedNumberOfVisit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Visitors</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Sign In</a>
 </p>
 <table class="table table-bordered table-hover table-striped">
     <thead>
@@ -15,9 +15,9 @@
             <th>
                 Guest Name
             </th>
-            <th>
+            @*<th>
                 Number of Visits
-            </th>
+            </th>*@
             <th>
                 Phone Number
             </th>
@@ -33,9 +33,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.GuestName)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.NumberOfVisit)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Visit_Detail_Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Visit_Detail_Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Visit_Detail_Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Visit_Detail_Id">Visit Details</a> |
+                @*<a asp-action="Details" asp-route-id="@item.Visit_Detail_Id">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.Visit_Detail_Id">Sign Out</a>
             </td>
         </tr>
 }

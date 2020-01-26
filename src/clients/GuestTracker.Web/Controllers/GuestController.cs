@@ -125,22 +125,6 @@ namespace GuestTracker.Web.Controllers
                 return View(ex.Message);
             }
         }
-
-        //private async Task<int> GetNumberOfVisit(string gustName)
-        //{
-        //    var number=0;
-        //    var getGuest = await  _unitOfWork.Guest.GetGuests(gustName);
-        //    var records = getGuest.Count();
-        //    if (records <= 0)
-        //    {
-        //        number += 1;
-        //    }
-        //    else
-        //    {
-        //        number = records + 1;
-        //    }
-        //    return number;
-        //}
         // GET: Guest/Edit/5
         public ActionResult Error()
         {
