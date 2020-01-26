@@ -33,7 +33,7 @@ namespace GuestTracker.DAL.Models
         [Key]
         public Guid Visit_Detail_Id { get; set; }
         public string GuestName { get; set; }
-        //public int NumberOfVisit { get; set; }
+        public string SignInTime { get; set; }
         public DateTime VisitDate { get; set; }
         public string PhoneNumber { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

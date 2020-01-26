@@ -63,7 +63,7 @@ namespace GuestTracker.Web.Controllers
             try
             {
 
-                if (_unitOfWork.VisitDetail.IsVisitorIn(form.GuestName, DAL.Models.GuestVisitStatus.IN, DateTime.Today))
+                if (_unitOfWork.VisitDetail.IsVisitorIn(form.GuestName,form.ArrivalDate))
                 {
                     ViewBag.Error = " Visitor is in already.";
                     var sexList = new List<SelectListItem>();
@@ -82,16 +82,17 @@ namespace GuestTracker.Web.Controllers
                 }
 
                 var signature = form.GuestName +  " signed";
-                    //Instantiate Visit Detail
+                //Instantiate Visit Detail
 
-                    var visitDetail = new VisitDetail
-                    {
-                        Visit_Detail_Id = Guid.NewGuid(),
-                        //NumberOfVisit = await GetNumberOfVisit(form.GuestName),
-                        PhoneNumber = form.PhoneNumber,
-                        GuestName = form.GuestName,
-                        VisitDate = DateTime.Today
-                    };
+                var visitDetail = new VisitDetail
+                {
+                    Visit_Detail_Id = Guid.NewGuid(),
+                    //NumberOfVisit = await GetNumberOfVisit(form.GuestName),
+                    PhoneNumber = form.PhoneNumber,
+                    GuestName = form.GuestName,
+                    SignInTime = form.ArrivalTime.ToShortTimeString(),
+                    VisitDate = DateTime.Today
+                };
 
 
                     //Instantiate Guest Visit 
@@ -129,6 +130,31 @@ namespace GuestTracker.Web.Controllers
         public ActionResult Error()
         {
             return View();
+        }
+        public async Task<IActionResult> SignOut(Guid id)
+        {
+            try
+            {
+                // we change the visit detail status to OUT
+                //get visitDetail by visitDetail Id
+                var visitDetail = await _unitOfWork.VisitDetail.GetVisitDetailAsync(id);
+                visitDetail.Status = DAL.Models.GuestVisitStatus.OUT;
+
+                // Change the departure time
+                var getGuest = await _unitOfWork.Guest.GetGuestByVisitDetailIdAsync(id);
+                getGuest.DepartureTime = DateTime.Now;
+
+                // Commit all the transaction
+                 await _unitOfWork.CompleteAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
+            
         }
 
         // GET: Guest/Edit/5

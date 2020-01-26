@@ -30,12 +30,12 @@ namespace GuestTracker.DAL.Repositories
         {
             return await _dbContext.VisitDetails.Where(x => x.VisitDate == DateTime.Today && x.Status==GuestVisitStatus.IN).ToListAsync();
         }
-        public bool IsVisitorIn(string name, GuestVisitStatus status, DateTime visitDate)
+        public bool IsVisitorIn(string name,DateTime visitDate)
         {
             var visitorIn = false;
-            var getVisitDetail = _dbContext.VisitDetails.Where(x => x.GuestName.Equals(name) && x.Status == status && x.VisitDate == visitDate);
-
-            if (getVisitDetail != null)
+            var getVisitDetail = _dbContext.VisitDetails.Where(x => x.GuestName.Equals(name) && x.Status == GuestVisitStatus.IN && x.VisitDate == visitDate);
+            //var count = getVisitDetail.Count();
+            if (getVisitDetail.Count() >0)
             {
                 visitorIn = true;
             }
@@ -51,6 +51,11 @@ namespace GuestTracker.DAL.Repositories
         public void UpdateVisitDetail(VisitDetail visitDetail)
         {
              _dbContext.VisitDetails.Update(visitDetail);
+        }
+
+        public async Task<VisitDetail> GetVisitDetailAsync(Guid id)
+        {
+            return await _dbContext.VisitDetails.FirstOrDefaultAsync(x => x.Visit_Detail_Id == id);
         }
     }
 }
